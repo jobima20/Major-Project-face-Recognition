@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceScan Pro - Face Recognition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">👁️</span>
+                <h1>FaceScan Pro</h1>
+            </div>
+            <p class="subtitle">Ultra-Simple Face Recognition</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="train">Train Model</button>
+            <button class="tab-btn" data-tab="live">Live Scan</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Train Tab -->
+            <div id="train" class="tab-pane active">
+                <div class="card">
+                    <h2>Train New Person</h2>
+                    <p class="description">Capture 20 images to train face recognition</p>
+                    
+                    <div class="form-group">
+                        <label for="person-name">Person Name</label>
+                        <input type="text" id="person-name" placeholder="Enter name..." autocomplete="off">
+                    </div>
+
+                    <div class="webcam-container">
+                        <video id="train-video" playsinline></video>
+                        <canvas id="train-canvas" style="display:none;"></canvas>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <p class="progress-text" id="progress-text">0 / 20 images</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="start-capture" class="btn btn-primary">Start Capture</button>
+                        <button id="capture-btn" class="btn btn-secondary" disabled>Capture Image</button>
+                    </div>
+
+                    <div id="train-status" class="status-message"></div>
+                </div>
+            </div>
+
+            <!-- Live Scan Tab -->
+            <div id="live" class="tab-pane">
+                <div class="card">
+                    <h2>Live Face Recognition</h2>
+                    <p class="description">Real-time face detection and recognition</p>
+                    
+                    <div class="button-group">
+                        <button id="start-live" class="btn btn-primary">Start Live Scan</button>
+                        <button id="stop-live" class="btn btn-secondary" disabled>Stop Live Scan</button>
+                    </div>
+                    
+                    <div class="video-feed-container">
+                        <img id="live-feed" alt="Live Feed" style="display:none;">
+                    </div>
+
+                    <div class="logs-container">
+                        <div class="logs-header">
+                            <h3>Recent Detections</h3>
+                            <button id="clear-logs" class="btn btn-small">Clear</button>
+                        </div>
+                        <div id="logs-list" class="logs-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
