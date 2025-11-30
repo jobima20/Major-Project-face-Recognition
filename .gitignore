@@ -1,0 +1,43 @@
+# Face Recognition Project - Git Ignore
+
+# Training data and models
+trainer.yml
+labels.txt
+known_faces/
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Test files
+test_webcam.py
+cleanup_and_setup.bat
+
+# Old files
+*_old.py
+*_backup.py
